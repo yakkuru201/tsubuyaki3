@@ -10,6 +10,20 @@ Tsubuyaki3::Application.routes.draw do
   end
   root to: 'tweets#index'
 
+  resources :tweets do
+    member do
+      post :favorite
+      delete :favorite, action: :unfavorite
+    end
+  end
+  resources :users do
+    post :follow
+    delete :follow, action: :unfollow
+  end
+end
+
+resource :profile
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
