@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :inverse_follows, class_name: Follow, foreign_key: :followed_id
   has_many :followed_users, through: :inverse_follows
 
-  mount_uploader :avatar, AvatarUploadrer
+  mount_uploader :avatar, AvatarUploader
 
   validates :name, uniqueness: true
 

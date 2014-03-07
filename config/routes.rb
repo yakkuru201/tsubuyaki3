@@ -20,9 +20,8 @@ Tsubuyaki3::Application.routes.draw do
     post :follow
     delete :follow, action: :unfollow
   end
-end
 
-resource :profile
+  resource :profile
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
