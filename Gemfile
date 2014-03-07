@@ -5,6 +5,7 @@ gem 'rails', '3.2.15'
 gem 'sqlite3'
 gem 'haml-rails'
 gem 'devise'
+gem 'carrierwave'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
