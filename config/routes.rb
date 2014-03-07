@@ -1,11 +1,9 @@
 Tsubuyaki3::Application.routes.draw do
-  get "users/index"
-
   devise_for :users
   resources :tweets, except: [:new, :show] do
     resource :favorite, only: [:create, :destroy]
   end
-
+  resource :users
   root to: 'tweets#index'
 
   # The priority is based upon order of creation:
