@@ -1,7 +1,7 @@
 .tweet.accordion-inner{ id: dom_id(tweet) }
-  .row
-    .span1
-      = image_tag tweet.user.avatar_url.to_s, size: '60x60'
+  .row.container
+    .span7
+      = image_tag tweet.user.avatar_url.to_s, size: '100x100'
     .span7.content
       %div
         = link_to user_path(tweet.user) do
@@ -12,20 +12,12 @@
           = image_tag tweet.image_url.to_s
   .accordion-body.collapse.in
     .accordion-inner
-      = favorite_button tweet, current_user, content_tag(:i, nil, lass: "icon-star") + "お気に入りに登録", content_tag(:i, nil, class: "icon-star") + "お気に入り登録を解除"
+      = favorite_button tweet, current_user, content_tag(:p, "ふぁぼる", class: "btn btn-default"), content_tag(:p, "ふぁぼらない", class: "btn btn-default")
       - if tweet.user == current_user
-        = link_to "#" do
-          %i.icon-pencil
-          編集する
-        = link_to tweet_path(tweet), method: :delete, confirm: "よろしいですか？" do
-          %i.icon-remove
-          削除する
+        %a.btn.btn-default{href: edit_tweet_path(tweet), role: "button"} 編集するわ
+        = link_to '削除じゃ', tweet_path(tweet), method: :delete, confirm: "よろしいですか？", class: "btn btn-default"
+
     .accordion-inner
       .row
-        .span1.fav
-          %strong = tweet.favorites.size
-          %br
-          %small.muted お気に入り
-
         .span4.muted
           = tweet.created_at.strftime("%Y年%m月%d日 - %H:%M")
